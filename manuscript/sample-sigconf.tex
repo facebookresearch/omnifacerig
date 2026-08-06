@@ -116,7 +116,7 @@ Facial rigging---creating FACS-based blendshapes together with inner-mouth geome
 
 \begin{teaserfigure}
   \centering
-  \includegraphics[width=0.95\textwidth]{cover_image.png}
+  \includegraphics[width=0.95\textwidth]{figures/cover_image.png}
   \caption{OmniFaceRig takes static surface-only 3D meshes with no pre-modeled oral cavity (top row) and fully automatically produces production-ready facial rigs with FACS blendshapes and generated inner-mouth geometry including teeth, gums, and tongue (bottom rows showing expressions and mouth details). The teaser highlights our support for diverse 3D character topologies---humans, humanoids, long-muzzled animals (e.g., dogs), and short-muzzled animals (e.g., bears)---within one unified rigging pipeline. We release Omni-Bench, a benchmark of rigged biped characters spanning humans and animals.}
   \Description{Large teaser showing diverse input static meshes in the top row, with corresponding rigged outputs showing various facial expressions in the rows below.}
   \label{fig:teaser}
@@ -174,7 +174,7 @@ RigAnyFace~\cite{ma2025riganyface} & \cmark & \cmark & \cmark & Blendshapes & \c
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{pipeline.png}
+  \includegraphics[width=\textwidth]{figures/pipeline.png}
   \caption{OmniFaceRig pipeline architecture. The pipeline consists of two stages. \textbf{Stage~1: Face Template Fitting} takes a static surface-only 3D mesh, performs face detection/cropping, face segmentation, VLM+CV riggability assessment, landmark extraction, and dense keypoint-driven rigid + non-rigid template registration, producing a fitted template mesh aligned to the input face. \textbf{Stage~2: Blendshape Rig Construction} takes the fitted template and constructs a production-ready FACS blendshape rig through face mesh fusion, generated teeth registration and texture baking, and FACS blendshape transfer, producing inner-mouth geometry (teeth, gums, and tongue) and re-packed UV/texture that are not present in the input.}
   \Description{Pipeline diagram showing the two-stage face auto-rigging workflow: Stage 1 (Face Template Fitting) followed by Stage 2 (Blendshape Rig Construction).}
   \label{fig:pipeline}
@@ -319,13 +319,13 @@ The combined multi-model ensemble achieves a face detection recall of \textbf{ne
   \centering
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{seg_methods_comp.png}
+    \includegraphics[width=\linewidth]{figures/seg_methods_comp.png}
     \caption{Single-model-dominant case.}
     \label{fig:segmentation_a}
   \end{subfigure}\\[0.4em]
   \begin{subfigure}[t]{\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{seg_methods_comp_02.png}
+    \includegraphics[width=\linewidth]{figures/seg_methods_comp_02.png}
     \caption{Ensemble case (per-region fusion needed).}
     \label{fig:segmentation_b}
   \end{subfigure}
@@ -462,7 +462,7 @@ Drawing upon the evaluation protocols established by recent state-of-the-art met
 
 For evaluation datasets, we utilize subsets of the ICT FaceKit~\cite{li2020dynamic} and Multiface~\cite{wuu2022multiface} datasets for standard humanoid comparisons. For in-the-wild and non-humanoid evaluation, we utilize our proposed Omni-Bench.
 
-We benchmark our method against the most relevant recent baselines: \textbf{Neural Face Rigging (NFR)}~\cite{qin2023neural} (a pioneering neural method for in-the-wild facial meshes), \textbf{Deformation Transfer (DT)}~\cite{sumner2004deformation} (the classic geometric baseline), and \textbf{RigAnyFace}~\cite{ma2025riganyface} (the current state-of-the-art supporting disconnected components). For RigAnyFace on Omni-Bench, we report metrics as N/A because its code is unavailable.
+We benchmark our method against the most relevant recent baselines: \textbf{Neural Face Rigging (NFR)}~\cite{qin2023neural} (a pioneering neural method for in-the-wild facial meshes), \textbf{Deformation Transfer (DT)}~\cite{sumner2004deformation} (the classic geometric baseline), and \textbf{RigAnyFace}~\cite{ma2025riganyface} (the current state-of-the-art supporting disconnected components). 
 
 \subsection{Quantitative Results}
 
@@ -507,7 +507,7 @@ Table~\ref{tab:omnibench_comparison} presents the evaluation on a 300-asset subs
 % by the page-only [!p] floats below.
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=\linewidth]{nose_comp.png}
+  \includegraphics[width=\linewidth]{figures/nose_comp.png}
   \caption{\textbf{Why nose anchors are unreliable.} Across five representative assets the nose region exhibits dramatic variation in both detection quality and contour shape. \textbf{From left to right:} (1) a human with a clean, well-detected nose (a positive baseline); (2) a human where nose detection outright fails; (3) a stylized humanoid where detection returns a mask but the contour is oddly shaped; (4) an animal where detection succeeds but the mask has the wrong overall nose shape; and (5) an animal where detection technically succeeds but the nose mask merges with the mouth into an irregular contour. \textbf{Rows (top to bottom):} input asset render; final nose segmentation mask; asset render with the mask overlaid. Even when detection succeeds, the strongly varying nose contour means that uniformly-sampled boundary keypoints do not correspond across assets, motivating our nose-landmark-free template design (\S\ref{sec:fitting}).}
   \Description{Nose comparison figure showing five characters arranged in columns and three rows (input render, segmentation mask, and overlay).}
   \label{fig:nose_rationale}
@@ -515,7 +515,7 @@ Table~\ref{tab:omnibench_comparison} presents the evaluation on a 300-asset subs
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=\linewidth]{failure_case.png}
+  \includegraphics[width=\linewidth]{figures/failure_case.png}
   \caption{\textbf{Failure cases.} \textbf{From left to right:} (1)~a \emph{bird} with a sharp beak and an unusual surface around the beak that segmentation cannot localize as a standard face; (2)~a \emph{fish-like face} with a very wide, elongated mouth that extends almost to the face boundary, on which segmentation tends to fill in the mouth region incorrectly; (3)~an \emph{insect} with oversized compound eyes located near the face boundary and an irregular mouth layout that disrupts landmark detection; (4)~a \emph{seahorse-like animal} with a strongly elongated or flattened snout (or a heavily occluded mouth) whose facial topology falls outside our template families. \textbf{Rows (top to bottom):} input render; final segmentation mask; asset render with the mask overlaid. In all four cases, segmentation either breaks down or the underlying face/mouth anatomy cannot be reliably fit by any of our human, long-muzzle, or short-muzzle templates.}
   \Description{Four failure-case characters (bird, fish, insect, seahorse-like) arranged in 4 columns and 3 rows (input render, segmentation mask, overlay).}
   \label{fig:failures}
@@ -523,7 +523,7 @@ Table~\ref{tab:omnibench_comparison} presents the evaluation on a 300-asset subs
 
 \begin{figure*}[!p]
   \centering
-  \includegraphics[width=0.95\textwidth]{omnibench_dataset.png}
+  \includegraphics[width=0.95\textwidth]{figures/omnibench_dataset.png}
   \caption{\textbf{Omni-Bench dataset overview.} A sample grid of representative characters from Omni-Bench, spanning humans, humanoids, cats, dogs, and other animals. Each cell shows a rendered frame of the \emph{rigged} asset produced by OmniFaceRig, with the expression sampled at random from the FACS rig (not the static input mesh). Omni-Bench contains 1,000 rigged biped 3D characters in T-pose, each with an automatically generated FACS facial rig, inner-mouth geometry (teeth, gums, tongue), and full text-to-3D generation metadata.}
   \Description{A grid of representative Omni-Bench characters covering humans, humanoids, cats, dogs, and other animals, shown as rendered frames of their automatically rigged outputs with randomly sampled expressions.}
   \label{fig:omnibench_overview}
@@ -531,7 +531,7 @@ Table~\ref{tab:omnibench_comparison} presents the evaluation on a 300-asset subs
 
 \begin{figure*}[!p]
   \centering
-  \includegraphics[width=\textwidth]{main_result.png}
+  \includegraphics[width=\textwidth]{figures/main_result.png}
   \caption{\textbf{Qualitative OmniFaceRig results across diverse 3D characters from Omni-Bench.} Each row is one character. The leftmost column is the input \emph{static surface-only mesh with no pre-modeled oral cavity} (no teeth, gums, tongue, or animation-grade facial topology). The remaining six columns are generated expression frames from the OmniFaceRig output, labeled at the top (e.g., \emph{surprise}, \emph{smile}, \emph{love}); most involve open-mouth deformations that expose the \emph{procedurally generated inner-mouth geometry}. Spanning humans, humanoids, long-muzzled animals (dogs, wolves, foxes), and short-muzzled animals (cats, bears, tigers), the same fully automatic pipeline produces complete FACS rigs from a surface-only input, keeps teeth and face intersection-free via ARAP+SDF placement, and preserves character-specific identity through sparse deformation transfer---generalizing across diverse 3D character topologies \emph{without any per-asset manual authoring}.}
   \Description{Qualitative results grid showing rows of input assets and their generated expression frames across humans, humanoids, long-muzzled animals, and short-muzzled animals.}
   \label{fig:qualitative_results}
