@@ -1,14 +1,14 @@
 # Omni Face Dataset v1
 
-This sharded release contains 1,376 reviewed assets and the required `rest_template` directory. Extract every shard into the same parent directory; all shards share the `omni_face_dataset_v1` root.
+This sharded release contains 1,345 reviewed assets and the required `rest_template` directory. Extract every shard into the same parent directory; all shards share the `omni_face_dataset_v1` root.
 
 ## Contents
 
 - Shards: 25 `tar.zst` archives
-- Asset directories: 1,376
+- Asset directories: 1,345
 - Files per asset: 11
 - `rest_template`: included in `omni_face_dataset_v1-shard-00001-of-00025.tar.zst`
-- Uncompressed payload: 30,589,813,958 bytes
+- Uncompressed payload: 29,880,067,699 bytes
 
 The existing monolithic ZIP is a separate legacy artifact and is not part of this sharded release.
 
