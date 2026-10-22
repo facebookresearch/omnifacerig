@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/0ac09a3f-f804-4655-aa3d-0e327edd3ef8
 
 ## Overview
 
-OmniFaceRig is a dataset of rigged, stylized 3D faces for research in facial animation, avatar creation, and geometry processing. The v1 release contains 1,345 assets spanning human, humanoid, domestic animal, and wild animal faces. Its subject groups include domestic cats and dogs, human professions, science-fiction characters, fantasy races, nature and elemental humanoids, and wild felines and canines.
+The OmniFaceRig dataset contains rigged, stylized 3D faces for research in facial animation, avatar creation, and geometry processing. Each asset was created using blendshapes that follow a FACS based interface. The v1 release contains 1,345 assets spanning human, humanoid, domestic animal, and wild animal faces. Its subject groups include domestic cats and dogs, human professions, science-fiction characters, fantasy races, nature and elemental humanoids, and wild felines and canines.
 
 Each asset provides source geometry, textures, reference renders, segmentation and keypoint images, a solved template mesh, and production-friendly rig exports. The release includes 687 male and 658 female assets across four face types.
 
