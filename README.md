@@ -1,7 +1,6 @@
 # OmniFaceRig
 
-<!-- Replace the URL below with the GitHub user-attachments URL returned after dragging omni_face_dataset/omni_face_rig.mp4 into GitHub's web editor. -->
-https://github.com/user-attachments/assets/REPLACE_WITH_VIDEO_ASSET_ID
+https://github.com/user-attachments/assets/0ac09a3f-f804-4655-aa3d-0e327edd3ef8
 
 ![License: TBD](https://img.shields.io/badge/license-TBD-lightgrey.svg)
 ![Dataset: 1,345 assets](https://img.shields.io/badge/dataset-1%2C345%20assets-1877F2.svg)
