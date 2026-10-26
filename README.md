@@ -2,7 +2,7 @@
 
 https://github.com/user-attachments/assets/0ac09a3f-f804-4655-aa3d-0e327edd3ef8
 
-![License: TBD](https://img.shields.io/badge/license-TBD-lightgrey.svg)
+[![License: FAIR Noncommercial Research](https://img.shields.io/badge/license-FAIR%20Noncommercial%20Research-blue.svg)](LICENSE)
 ![Dataset: 1,345 assets](https://img.shields.io/badge/dataset-1%2C345%20assets-1877F2.svg)
 [![Paper: arXiv](https://img.shields.io/badge/paper-arXiv%3A2606.08043-b31b1b.svg)](https://arxiv.org/abs/2606.08043)
 
@@ -164,7 +164,7 @@ The result is `omni_face_dataset_v1/` with 1,345 asset directories and one `rest
 
 ## License
 
-The OmniFaceRig license is not yet finalized. See [`LICENSE`](LICENSE) for the current placeholder and confirm the final terms with Meta Open Source and Legal before public release. CC BY-NC 4.0 is under consideration but does not apply unless the placeholder is replaced with approved license text.
+The OmniFaceRig Research Materials are made available under the [FAIR Noncommercial Research License v1](LICENSE). Use is subject to the complete license terms, including its restrictions to Noncommercial Research Uses. The canonical license text is also available from [Meta FAIR on Hugging Face](https://huggingface.co/facebook/fair-noncommercial-research-license/blob/main/LICENSE).
 
 ## Citation
 
