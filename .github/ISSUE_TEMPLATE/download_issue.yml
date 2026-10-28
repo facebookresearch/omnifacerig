@@ -1,0 +1,49 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+name: Download or extraction problem
+description: Report a problem with Git LFS download, checksum verification, or shard extraction.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you file, run `git lfs pull` in `omni_face_dataset/omni_face_dataset_v1_shards` and follow the steps in the [README](https://github.com/facebookresearch/omnifacerig#download-and-rebuild-from-shards). A shard file of about 135 bytes is a Git LFS pointer, not the archive.
+  - type: dropdown
+    id: step
+    attributes:
+      label: Failing step
+      options:
+        - git lfs pull
+        - Checksum verification (SHA256SUMS)
+        - Shard extraction (zstd or tar)
+        - Review videos or sample archive
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Tool versions
+      description: Output of `git lfs version`, `zstd --version`, and `tar --version`.
+      render: text
+  - type: textarea
+    id: output
+    attributes:
+      label: Commands and output
+      description: The exact commands you ran and the complete error output.
+      render: shell
+    validations:
+      required: true
