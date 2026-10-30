@@ -1,0 +1,60 @@
+# Omni Face Dataset v1
+
+This sharded release contains 1,345 reviewed assets and the required `rest_template` directory. Extract every shard into the same parent directory; all shards share the `omni_face_dataset_v1` root.
+
+## Contents
+
+- Shards: 25 `tar.zst` archives
+- Asset directories: 1,345
+- Files per asset: 11
+- `rest_template`: included in `omni_face_dataset_v1-shard-00001-of-00025.tar.zst`
+- Uncompressed payload: 29,880,067,679 bytes
+
+The existing monolithic ZIP is a separate legacy artifact and is not part of this sharded release.
+
+## Verify
+
+Run SHA-256 verification against `SHA256SUMS` before extraction. On Linux or macOS:
+
+```bash
+sha256sum -c SHA256SUMS
+```
+
+On Windows PowerShell:
+
+```powershell
+Get-Content .\SHA256SUMS | ForEach-Object {
+  $hash, $name = $_ -split '  ', 2
+  if ((Get-FileHash -Algorithm SHA256 -LiteralPath $name).Hash.ToLowerInvariant() -ne $hash) { throw "Checksum failed: $name" }
+}
+```
+
+## Extract
+
+Extract all shards into the same directory in filename order. On Linux or macOS:
+
+```bash
+for shard in omni_face_dataset_v1-shard-*.tar.zst; do
+  zstd -dc "$shard" | tar -xf -
+done
+```
+
+On Windows PowerShell:
+
+```powershell
+Get-ChildItem .\omni_face_dataset_v1-shard-*.tar.zst | Sort-Object Name | ForEach-Object {
+  & zstd -dc $_.FullName | tar -xf -
+  if ($LASTEXITCODE -ne 0) { throw "Extraction failed: $($_.Name)" }
+}
+```
+
+After extraction, the dataset is under `omni_face_dataset_v1`.
+
+## Naming correction (v1.0.1)
+
+Six human/humanoid assets previously named as domestic cats now use their reviewed
+categories and new IDs after each category's existing range. See
+[`../omni_face_dataset_v1_asset_renames.csv`](../omni_face_dataset_v1_asset_renames.csv).
+Only shards 1, 4, 5 and 6 were rebuilt; shard membership is unchanged.
+Use a fresh extraction directory when updating: extracting over an older
+release would leave the six old asset directories behind.

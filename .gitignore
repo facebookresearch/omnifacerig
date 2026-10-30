@@ -1,0 +1,21 @@
+.DS_Store
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+manuscript/supplemental.pdf
+
+# Paper drafts live on the paper-fairmeta-restyle branch
+draft/
