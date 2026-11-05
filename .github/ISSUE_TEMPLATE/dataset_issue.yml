@@ -1,0 +1,67 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+name: Dataset issue
+description: Report a problem with an asset, its files, or its metadata labels.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a dataset problem. For Git LFS, checksum, or extraction failures, use the **Download or extraction problem** template instead.
+  - type: input
+    id: assets
+    attributes:
+      label: Asset IDs
+      description: One or more `asset` values from `omni_face_dataset_v1_metadata.csv`, separated by commas.
+      placeholder: 000_domestic_cats_male
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: Problem type
+      options:
+        - Missing or corrupt file
+        - Incorrect metadata label (group, gender, or face type)
+        - Source mesh or solved template geometry
+        - Rig or blendshapes
+        - Texture, render, segmentation, or keypoint image
+        - Review video
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: files
+    attributes:
+      label: Affected files
+      multiple: true
+      options:
+        - "<asset>.glb"
+        - "<asset>.obj, <asset>.mtl, or <asset>.png"
+        - "<asset>_render.png"
+        - "<asset>_final_segmentation.png"
+        - "<asset>_head_crop_keypoints.png"
+        - "<asset>_solved_template.obj"
+        - "<asset>_rig.fbx"
+        - "<asset>_rig.glb"
+        - "<asset>_rig.usdz"
+        - "rest_template"
+        - "Review videos"
+        - "Metadata CSV"
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is wrong, and what did you expect? Screenshots help.
+    validations:
+      required: true
+  - type: input
+    id: software
+    attributes:
+      label: Software used
+      description: The tool and version you used to open the file, if relevant.
+      placeholder: Blender 4.2
